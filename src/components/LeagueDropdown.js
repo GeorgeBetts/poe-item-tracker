@@ -1,25 +1,28 @@
 import React, { Component } from "react";
 
 export class LeagueDropdown extends Component {
-  state = {
-    value: this.props.league,
+  handleChange = (event) => {
+    this.props.changeLeague(event.target.value);
   };
 
-  handleChange = (event) => {
-    this.setState({ value: event.target.value });
-    this.props.changeLeague(event.target.value);
+  renderOptions = () => {
+    return this.props.leagueOptions.map((league) => {
+      return (
+        <option value={league.id} key={league.id}>
+          {league.id}
+        </option>
+      );
+    });
   };
 
   render() {
     return (
       <select
         className="custom-select"
-        value={this.state.value}
+        value={this.props.league}
         onChange={this.handleChange}
       >
-        <option value="Ritual">Ritual</option>
-        <option value="Heist">Heist</option>
-        <option value="Harvest">Harvest</option>
+        {this.renderOptions()}
       </select>
     );
   }
