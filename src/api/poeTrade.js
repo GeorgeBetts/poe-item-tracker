@@ -1,5 +1,5 @@
 import axios from "axios";
 
 export default axios.create({
-  baseURL: "http://www.pathofexile.com/api/trade",
+  baseURL: "https://www.pathofexile.com/api/trade",
 });
